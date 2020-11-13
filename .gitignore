@@ -4,4 +4,4 @@
 !*/
 # Don't ignore .gitignore and *.cs files
 !.gitignore
-!*.cs
+!Assets/Scripts/*.cs
