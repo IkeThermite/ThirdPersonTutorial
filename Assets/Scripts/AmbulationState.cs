@@ -29,9 +29,7 @@ namespace NWW
             //Character.transform.position += moveDirection * moveSpeed * Time.deltaTime;
             characterMover.Move(moveVelocity * Time.deltaTime);
             
-            Character.Animator.SetFloat("MoveSpeed", moveSpeed / Character.GetMaxSpeed());
-
-            
+            Character.Animator.SetFloat("MoveSpeed", moveSpeed / Character.GetMaxSpeed());           
 
         }
     }

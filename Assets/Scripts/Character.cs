@@ -5,6 +5,8 @@ namespace NWW
 {
     public sealed class Character : MonoBehaviour
     {
+        public bool lockCursor = false;
+
         [Header("Character Sheet")]
         [SerializeField] private float moveSpeed = 2;
         [SerializeField] private float runSpeed = 5;
@@ -24,6 +26,8 @@ namespace NWW
         private void Awake()
         {
             StateMachine = new StateMachine<CharacterState>();
+            if (lockCursor)
+                Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void Start()
