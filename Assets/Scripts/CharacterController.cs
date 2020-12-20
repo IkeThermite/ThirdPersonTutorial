@@ -22,8 +22,6 @@ namespace NWW
         public bool IsRunning { get; private set; }
         public bool IsGrounded { get; private set; }
         public bool IsCrouching { get; private set; }
-        public bool IsJumping { get; private set; }
-
 
         public Vector3 MoveDirection { get; private set; }
         public float CurrentMoveSpeed { get; private set; }
@@ -63,14 +61,7 @@ namespace NWW
                 character.StateMachine.TrySetState(crouchedState);
                 return;
             }
-            
-            //if (MoveDirection.magnitude >= 0.1f)
-            //{
-            //    character.StateMachine.TrySetState(ambulationState);
-            //    return;
-            //}
 
-            //MoveDirection = Vector3.zero;
             character.StateMachine.TrySetState(ambulationState);
             Debug.Log($"{CurrentMoveSpeed}");
         }
@@ -91,13 +82,6 @@ namespace NWW
         {
             IsCrouching = !IsCrouching;
         }
-
-        public void OnJumpInput(bool jumpInput)
-        {
-            IsJumping = jumpInput;
-        }
-
-
 
         public void SetCurrentMoveSpeed(float acceleration, float targetSpeed)
         {

@@ -5,3 +5,5 @@
 # Don't ignore .gitignore and *.cs files
 !.gitignore
 !Assets/Scripts/*.cs
+!ThirdPersonTutorial_Small.gif
+!./README.md

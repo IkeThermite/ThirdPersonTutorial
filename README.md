@@ -1,4 +1,10 @@
 # ThirdPersonTutorial
+## NB: ONLY CONTAINS SCRIPTS
+Note that this repository only contains the scripts for my third person controller tutorial series. It does not contain any assets.
+
+![The third person controller.](ThirdPersonTutorial_Small.gif)
+
+
 The scripts (only) associated with my third person tutorial series for Unity.
 
 This repository contains the completed scripts for:
