@@ -1,28 +1,26 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace NWW
 {
-    public sealed class AmbulationState : CharacterState
+    public sealed class CrouchedState : CharacterState
     {
-
         private void OnEnable()
         {
-            Character.Animator.CrossFade("Base Layer.Ambulation", 0.25f);            
+            Character.Animator.CrossFade("Base Layer.Crouching", 0.25f);
         }
 
         private void Update()
-        {            
+        {
             Vector3 moveDirection = Character.Controller.MoveDirection;
-           
-            float targetSpeed = 0.0f;
-            if (Character.Controller.IsMoving)
-                targetSpeed = Character.Controller.IsRunning ? Character.RunSpeed : Character.MoveSpeed;
-            Character.Controller.SetCurrentMoveSpeed(Character.Acceleration, targetSpeed);
-            float moveSpeed = Character.Controller.CurrentMoveSpeed;
             
+            float targetSpeed = Character.Controller.IsMoving ? Character.CrouchSpeed : 0.0f;
+            Character.Controller.SetCurrentMoveSpeed(Character.CrouchAcceleration, targetSpeed);
+            float moveSpeed = Character.Controller.CurrentMoveSpeed;
+
             if (Character.Controller.IsMoving)
             {
-                float turnSpeed = Character.TurnSpeed;
+                //moveSpeed = SetMoveSpeed();
+                float turnSpeed = Character.CrouchTurnSpeed;
                 float groundClampSpeed = -Mathf.Tan(Mathf.Deg2Rad * Character.Controller.Mover.maxFloorAngle)
                     * moveSpeed;
 
@@ -34,10 +32,8 @@ namespace NWW
                     rotationToMoveDirection, turnSpeed * Time.deltaTime);
 
                 Character.Controller.Mover.Move(moveVelocity * Time.deltaTime);
-            }            
-            Character.Animator.SetFloat("MoveSpeed", moveSpeed / Character.RunSpeed);
+            }
+            Character.Animator.SetFloat("MoveSpeed", moveSpeed / Character.crouchMoveSpeed);
         }
-
-
     }
 }

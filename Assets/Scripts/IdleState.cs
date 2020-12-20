@@ -6,6 +6,9 @@ namespace NWW
     {
         private void OnEnable()
         {
+            if (Character.GroundedIndicator != null)
+                Character.GroundedIndicator.material.color = Color.gray;
+
             Character.Animator.CrossFade("Base Layer.Idle", 0.25f);
         }
     }
